@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.BindView;
@@ -16,13 +18,15 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.foodEditText) EditText mFood;
     @BindView(R.id.adjective) EditText mAdjective;
     @BindView(R.id.thingEditText) EditText mThing;
-    @BindView(R.id.button) EditText mButton;
+    @BindView(R.id.button) Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
+
         mButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("food", food);
                 intent.putExtra("adjective", adjective);
                 intent.putExtra("thing", thing);
+                Log.d("MainActivity", person);
 
                 //starting the activity
                 startActivity(intent);
