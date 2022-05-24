@@ -2,7 +2,9 @@ package com.example.mad_libs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import butterknife.BindView;
@@ -21,5 +23,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //capture user input
+                String person = mPerson.getText().toString();
+                String color = mColor.getText().toString();
+                String food = mFood.getText().toString();
+                String adjective = mAdjective.getText().toString();
+                String thing = mThing.getText().toString();
+
+                Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+                intent.putExtra("person", person);
+                intent.putExtra("color", color);
+                intent.putExtra("food", food);
+                intent.putExtra("adjective", adjective);
+                intent.putExtra("thing", thing);
+
+                //starting the activity
+                startActivity(intent);
+            }
+        });
     }
 }
+
+
+
+
+
+
+
+
+
